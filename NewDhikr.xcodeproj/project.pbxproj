@@ -317,7 +317,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C24E090A262D382A00FFD5FE /* Build configuration list for PBXProject "SwiftUIWatchConnectivity" */;
+			buildConfigurationList = C24E090A262D382A00FFD5FE /* Build configuration list for PBXProject "NewDhikr" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -674,7 +674,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C24E090A262D382A00FFD5FE /* Build configuration list for PBXProject "SwiftUIWatchConnectivity" */ = {
+		C24E090A262D382A00FFD5FE /* Build configuration list for PBXProject "NewDhikr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C24E093B262D382C00FFD5FE /* Debug */,

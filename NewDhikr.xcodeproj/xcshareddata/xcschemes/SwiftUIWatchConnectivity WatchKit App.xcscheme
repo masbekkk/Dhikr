@@ -17,7 +17,7 @@
                BlueprintIdentifier = "C24E091D262D382B00FFD5FE"
                BuildableName = "SwiftUIWatchConnectivity WatchKit App.app"
                BlueprintName = "SwiftUIWatchConnectivity WatchKit App"
-               ReferencedContainer = "container:SwiftUIWatchConnectivity.xcodeproj">
+               ReferencedContainer = "container:NewDhikr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "C24E090E262D382A00FFD5FE"
                BuildableName = "SwiftUIWatchConnectivity.app"
                BlueprintName = "SwiftUIWatchConnectivity"
-               ReferencedContainer = "container:SwiftUIWatchConnectivity.xcodeproj">
+               ReferencedContainer = "container:NewDhikr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -60,7 +60,7 @@
             BlueprintIdentifier = "C24E091D262D382B00FFD5FE"
             BuildableName = "SwiftUIWatchConnectivity WatchKit App.app"
             BlueprintName = "SwiftUIWatchConnectivity WatchKit App"
-            ReferencedContainer = "container:SwiftUIWatchConnectivity.xcodeproj">
+            ReferencedContainer = "container:NewDhikr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "C24E091D262D382B00FFD5FE"
             BuildableName = "SwiftUIWatchConnectivity WatchKit App.app"
             BlueprintName = "SwiftUIWatchConnectivity WatchKit App"
-            ReferencedContainer = "container:SwiftUIWatchConnectivity.xcodeproj">
+            ReferencedContainer = "container:NewDhikr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

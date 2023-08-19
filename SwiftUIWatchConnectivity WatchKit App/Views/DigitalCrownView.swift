@@ -71,8 +71,10 @@ struct DigitalCrownView: View {
                 )
                 .onReceive(Just(scrollAmount)) { newScrollAmount in
                     let scroll = Int(newScrollAmount)
-                    if count != scroll {
+                    if counter.count != scroll {
                         count = scroll
+                        counter.setAmountCount(AmountCount: scroll)
+//                        counter.increment()
                         trimProgress = 1 / maximumValue
                         progress += trimProgress
                     }
@@ -122,11 +124,12 @@ struct DigitalCrownView: View {
             .onTapGesture()
             {
                 
-                if count < Int(maximumValue) {
+                if counter.count < Int(maximumValue) {
                     WKInterfaceDevice.current().play(.click)
                     scrollAmount += 1
                     count = Int(scrollAmount)
-                    counter.increment()
+                    counter.setAmountCount(AmountCount: Int(scrollAmount))
+//                    counter.increment()
 //                    counter.setDhikrName(dhikr: detailDhikr.name)
                     trimProgress = 1/maximumValue
                     progress += trimProgress
@@ -135,7 +138,7 @@ struct DigitalCrownView: View {
                 
             }
             .onAppear {
-                counter.increment()
+//                counter.increment()
                 counter.setDhikrName(dhikr: "\(detailDhikr.name ) \(detailDhikr.amount )x")
                 heartRate.start()
             }

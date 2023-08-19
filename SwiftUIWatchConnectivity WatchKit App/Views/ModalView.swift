@@ -20,8 +20,9 @@ struct ModalView: View {
     @State private var progress: Double = 0.0
     @State private var isAnimating = false
     @State private var showAlert: Bool = true
+    
     @ObservedObject private var heartRate = HeartRate()
-    let colors: [Color] = [Color.tosca, Color.lightTosca]
+    let colors: [Color] = [Color.lightTosca, Color.tosca]
     
     @StateObject var counter = Counter()
     
@@ -71,8 +72,9 @@ struct ModalView: View {
                 )
                 .onReceive(Just(scrollAmount)) { newScrollAmount in
                     let scroll = Int(newScrollAmount)
-                    if count != scroll {
+                    if counter.count != scroll {
                         count = scroll
+                        counter.setAmountCount(AmountCount: scroll)
                         trimProgress = 1 / maximumValue
                         progress += trimProgress
                     }
@@ -121,13 +123,14 @@ struct ModalView: View {
             //            .navigationBarHidden(true)
             .onTapGesture()
             {
-                print(maximumValue)
-                if count < Int(maximumValue) {
+//                print(maximumValue)
+                if counter.count < Int(maximumValue) {
                     WKInterfaceDevice.current().play(.click)
                     scrollAmount += 1
                     count = Int(scrollAmount)
-                    counter.increment()
-                    counter.setDhikrName(dhikr: detailDhikr.name)
+                    counter.setAmountCount(AmountCount: Int(scrollAmount))
+//                    counter.increment()
+//                    counter.setDhikrName(dhikr: detailDhikr.name)
                     trimProgress = 1/maximumValue
                     progress += trimProgress
                     
@@ -135,7 +138,7 @@ struct ModalView: View {
                 
             }
             .onAppear {
-                counter.increment()
+//                counter.increment()
                 counter.setDhikrName(dhikr: "\(detailDhikr.name ) \(detailDhikr.amount )x")
                 heartRate.start()
             }

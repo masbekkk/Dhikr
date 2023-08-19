@@ -49,6 +49,13 @@ final class Counter: ObservableObject {
         sendMessage(["dhikr_name": dhikrName])
     }
     
+    func setAmountCount(AmountCount: Int) {
+        print("Received count: \(count)")
+        count = AmountCount
+        sendMessage(["count": count])
+
+    }
+    
     private func sendMessage(_ message: [String: Any]) {
         session.sendMessage(message, replyHandler: nil) { error in
             print("Error sending message: \(error.localizedDescription)")
