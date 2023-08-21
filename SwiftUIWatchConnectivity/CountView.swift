@@ -63,8 +63,8 @@ struct CountView: View {
             }
             .padding()
             VStack{
-                Text("\(counter.dhikrName )x")
-                    .font(.caption)
+                Text("\(counter.dhikrName)")
+                    .font(.custom("SF Pro", size: 16.0, relativeTo: .largeTitle))
                     .padding(.top, 4)
             }
             .padding(.top, 5)
