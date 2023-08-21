@@ -68,24 +68,6 @@ struct ModalView: View {
                     sensitivity: .low,
                     isContinuous: false
                 )
-//                .onReceive(Just(scrollAmount)) { newScrollAmount in
-//                    //                    counter.setIphoneSendActive(status: false)
-//                    //                    print(counter.isIphoneSendActive)
-////                    if counter.isIphoneSendActive == false {
-//
-//                        let scroll = Int(newScrollAmount)
-//                        if counter.count != scroll {
-//                            count = scroll
-////                            counter.setAmountCount(AmountCount: scroll)
-////                            counter.increment()
-//                            trimProgress = 1 / maximumValue
-//                            progress += trimProgress
-//                        }
-////                    }
-//                    if count == 0 {
-//                        progress = 0
-//                    }
-//                }
                 Circle()
                     .trim(from: 0, to: CGFloat(progress))
                     .stroke(
@@ -98,19 +80,6 @@ struct ModalView: View {
                         style: StrokeStyle(lineWidth: 20, lineCap: .round)
                     )
                     .rotationEffect(.degrees(-90))
-                
-                //                Circle()
-                //                    .frame(width: 20, height: 20)
-                //                    .offset(y: -150)
-                //                    .foregroundColor(Color.lightTosca)
-                //                    .rotationEffect(.degrees(360 * scrollAmount))
-                //                    .shadow(
-                //                        color: .black,
-                //                        radius: 20
-                //                    )
-                //                    .opacity(0.1)
-                //                    .padding()
-                
                 if showAlert {
                     Text("tap or scroll to start")
                         .font(.footnote)
@@ -121,27 +90,18 @@ struct ModalView: View {
                 }
             }
             .padding(.top, 2)
-            //            .navigationTitle("Dhikr Now")
-            //            .navigationBarTitleDisplayMode(.inline)
             .padding(.top, 8)
-            //            .navigationBarHidden(true)
             .onTapGesture()
             {
-                //                print(maximumValue)
-//                counter.setIphoneSendActive(status: false)
-//                //                print(counter.isIphoneSendActive)
-//                if counter.isIphoneSendActive == false {
-                    if counter.count < Int(maximumValue) {
-                        
-                        WKInterfaceDevice.current().play(.click)
-                        scrollAmount += 1
-                        count = Int(scrollAmount)
-                        counter.increment()
-//                        counter.setAmountCount(AmountCount: Int(scrollAmount))
-                        trimProgress = 1/maximumValue
-                        progress += trimProgress
-                        
-//                    }
+                
+                if counter.count < Int(maximumValue) {
+                    
+                    WKInterfaceDevice.current().play(.click)
+                    scrollAmount += 1
+                    count = Int(scrollAmount)
+                    counter.increment()
+                    trimProgress = 1/maximumValue
+                    progress += trimProgress
                 }
                 
             }
@@ -158,8 +118,6 @@ struct ModalView: View {
                     .padding(.top, 4)
             }
             .padding(.top, 5)
-            //            .padding()
-            
         }
     }
 }

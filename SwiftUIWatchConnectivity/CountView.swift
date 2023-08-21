@@ -52,18 +52,6 @@ struct CountView: View {
                     .rotationEffect(.degrees(-90))
                     .padding()
                 
-//                Circle()
-//                    .frame(width: 20, height: 20)
-//                    .offset(y: -150)
-//                    .foregroundColor(Color.lightTosca)
-//                    .rotationEffect(.degrees(360 * scrollAmount))
-//                    .shadow(
-//                        color: .black,
-//                        radius: 20
-//                    )
-//                    .opacity(0.1)
-//                    .padding()
-                
                 if showAlert {
                     Text("tap to start")
                         .font(.footnote)
@@ -84,45 +72,17 @@ struct CountView: View {
             .navigationTitle("Dhikr Now")
             
         }
-//        .onReceive(Just(scrollAmount)) { newScrollAmount in
-//            //                    counter.setIphoneSendActive(status: false)
-//            //                    print(counter.isIphoneSendActive)
-////            if counter.isIphoneSendActive {
-//
-//                let scroll = Int(newScrollAmount)
-//                if counter.count != scroll {
-//                    count = scroll
-////                    counter.increment()
-//                    counter.setAmountCount(AmountCount: scroll)
-//                    trimProgress = 1 / maximumValue
-//                    progress += trimProgress
-//                }
-////            }
-//            if count == 0 {
-//                progress = 0
-//            }
-//        }
-
         .onTapGesture()
         {
-//            counter.setIphoneSendActive(status: true)
-//            print(counter.isIphoneSendActive)
-//            if counter.isIphoneSendActive {
-                if counter.count < Int(maximumValue) {
-                    scrollAmount += 1
-                    counter.increment() 
-//                    count = Int(scrollAmount)
-//                    counter.setAmountCount(AmountCount: Int(scrollAmount))
-                    trimProgress = 1/maximumValue
-                    progress += trimProgress
-                    
-//                }
+            if counter.count < Int(maximumValue) {
+                scrollAmount += 1
+                counter.increment()
+                trimProgress = 1/maximumValue
+                progress += trimProgress
             }
             
         }
         .onAppear {
-//            counter.setAmountCount(AmountCount: 0)
-//            counter.setDhikrName(dhikr: "\(detailDhikr.name ) \(detailDhikr.amount )x")
         }
     }
 }
