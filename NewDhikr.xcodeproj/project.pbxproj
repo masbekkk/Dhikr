@@ -22,6 +22,13 @@
 		C24E094F262D384E00FFD5FE /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E094A262D384E00FFD5FE /* Counter.swift */; };
 		C24E0950262D384E00FFD5FE /* SessionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E094B262D384E00FFD5FE /* SessionDelegator.swift */; };
 		C24E0951262D384E00FFD5FE /* SessionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24E094B262D384E00FFD5FE /* SessionDelegator.swift */; };
+		DD1E10A62A907E90007ABE62 /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E10A52A907E90007ABE62 /* CountView.swift */; };
+		DD1E10A72A907EB8007ABE62 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC352A8CC81A001F413A /* Color.swift */; };
+		DD1E10A82A907EBC007ABE62 /* DhikrData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC332A8CC81A001F413A /* DhikrData.swift */; };
+		DD1E10A92A907EC1007ABE62 /* DetailDhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC262A8CC81A001F413A /* DetailDhikr.swift */; };
+		DD1E10AA2A907EC4007ABE62 /* Dhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC252A8CC81A001F413A /* Dhikr.swift */; };
+		DD1E10AC2A925DE4007ABE62 /* CombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E10AB2A925DE4007ABE62 /* CombineView.swift */; };
+		DD1E10AD2A925DE4007ABE62 /* CombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E10AB2A925DE4007ABE62 /* CombineView.swift */; };
 		DD25EC362A8CC81A001F413A /* Dhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC252A8CC81A001F413A /* Dhikr.swift */; };
 		DD25EC372A8CC81A001F413A /* DetailDhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC262A8CC81A001F413A /* DetailDhikr.swift */; };
 		DD25EC3D2A8CC81A001F413A /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC2D2A8CC81A001F413A /* ModalView.swift */; };
@@ -93,6 +100,8 @@
 		C24E0949262D384E00FFD5FE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C24E094A262D384E00FFD5FE /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		C24E094B262D384E00FFD5FE /* SessionDelegator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegator.swift; sourceTree = "<group>"; };
+		DD1E10A52A907E90007ABE62 /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
+		DD1E10AB2A925DE4007ABE62 /* CombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineView.swift; sourceTree = "<group>"; };
 		DD25EC252A8CC81A001F413A /* Dhikr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dhikr.swift; sourceTree = "<group>"; };
 		DD25EC262A8CC81A001F413A /* DetailDhikr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDhikr.swift; sourceTree = "<group>"; };
 		DD25EC2D2A8CC81A001F413A /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
@@ -150,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				C24E0949262D384E00FFD5FE /* ContentView.swift */,
+				DD1E10A52A907E90007ABE62 /* CountView.swift */,
+				DD1E10AB2A925DE4007ABE62 /* CombineView.swift */,
 				C24E0912262D382A00FFD5FE /* SwiftUIWatchConnectivityApp.swift */,
 				C24E0916262D382B00FFD5FE /* Assets.xcassets */,
 				C24E091B262D382B00FFD5FE /* Info.plist */,
@@ -372,9 +383,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C24E094E262D384E00FFD5FE /* Counter.swift in Sources */,
+				DD1E10A92A907EC1007ABE62 /* DetailDhikr.swift in Sources */,
 				C24E0950262D384E00FFD5FE /* SessionDelegator.swift in Sources */,
 				C24E0913262D382A00FFD5FE /* SwiftUIWatchConnectivityApp.swift in Sources */,
+				DD1E10AC2A925DE4007ABE62 /* CombineView.swift in Sources */,
+				DD1E10A62A907E90007ABE62 /* CountView.swift in Sources */,
 				C24E094C262D384E00FFD5FE /* ContentView.swift in Sources */,
+				DD1E10AA2A907EC4007ABE62 /* Dhikr.swift in Sources */,
+				DD1E10A72A907EB8007ABE62 /* Color.swift in Sources */,
+				DD1E10A82A907EBC007ABE62 /* DhikrData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +409,7 @@
 				DD25EC3E2A8CC81A001F413A /* DhikrsCarouselView.swift in Sources */,
 				DD25EC442A8CC81A001F413A /* Color.swift in Sources */,
 				DD25EC3D2A8CC81A001F413A /* ModalView.swift in Sources */,
+				DD1E10AD2A925DE4007ABE62 /* CombineView.swift in Sources */,
 				C24E0951262D384E00FFD5FE /* SessionDelegator.swift in Sources */,
 				C24E0934262D382C00FFD5FE /* ComplicationController.swift in Sources */,
 				DD25EC412A8CC81A001F413A /* HeartRate.swift in Sources */,
@@ -634,6 +652,7 @@
 				DEVELOPMENT_TEAM = 8R3VHB938V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIWatchConnectivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "New Dhikr";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -657,6 +676,7 @@
 				DEVELOPMENT_TEAM = 8R3VHB938V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIWatchConnectivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "New Dhikr";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

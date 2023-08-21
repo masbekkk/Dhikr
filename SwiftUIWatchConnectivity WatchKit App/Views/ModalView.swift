@@ -11,20 +11,18 @@ import WatchKit
 
 struct ModalView: View {
     @Binding var detailDhikr: DetailDhikr
-    @State private var shift: Int = 1
     
     @State private var scrollAmount: Double = 0.0
     @State private var count: Int = 1
-    //        @State private var maximumValue: Double = 10.0
     @State private var trimProgress: Double = 0.0
     @State private var progress: Double = 0.0
     @State private var isAnimating = false
     @State private var showAlert: Bool = true
     
     @ObservedObject private var heartRate = HeartRate()
-    let colors: [Color] = [Color.lightTosca, Color.tosca]
-    
     @StateObject var counter = Counter()
+    
+    let colors: [Color] = [Color.lightTosca, Color.tosca]
     
     var body: some View {
         let maximumValue = Double(detailDhikr.amount)
@@ -70,18 +68,24 @@ struct ModalView: View {
                     sensitivity: .low,
                     isContinuous: false
                 )
-                .onReceive(Just(scrollAmount)) { newScrollAmount in
-                    let scroll = Int(newScrollAmount)
-                    if counter.count != scroll {
-                        count = scroll
-                        counter.setAmountCount(AmountCount: scroll)
-                        trimProgress = 1 / maximumValue
-                        progress += trimProgress
-                    }
-                    if count == 0 {
-                        progress = 0
-                    }
-                }
+//                .onReceive(Just(scrollAmount)) { newScrollAmount in
+//                    //                    counter.setIphoneSendActive(status: false)
+//                    //                    print(counter.isIphoneSendActive)
+////                    if counter.isIphoneSendActive == false {
+//
+//                        let scroll = Int(newScrollAmount)
+//                        if counter.count != scroll {
+//                            count = scroll
+////                            counter.setAmountCount(AmountCount: scroll)
+////                            counter.increment()
+//                            trimProgress = 1 / maximumValue
+//                            progress += trimProgress
+//                        }
+////                    }
+//                    if count == 0 {
+//                        progress = 0
+//                    }
+//                }
                 Circle()
                     .trim(from: 0, to: CGFloat(progress))
                     .stroke(
@@ -95,17 +99,17 @@ struct ModalView: View {
                     )
                     .rotationEffect(.degrees(-90))
                 
-                Circle()
-                    .frame(width: 20, height: 20)
-                    .offset(y: -150)
-                    .foregroundColor(Color.lightTosca)
-                    .rotationEffect(.degrees(360 * scrollAmount))
-                    .shadow(
-                        color: .black,
-                        radius: 20
-                    )
-                    .opacity(0.1)
-                    .padding()
+                //                Circle()
+                //                    .frame(width: 20, height: 20)
+                //                    .offset(y: -150)
+                //                    .foregroundColor(Color.lightTosca)
+                //                    .rotationEffect(.degrees(360 * scrollAmount))
+                //                    .shadow(
+                //                        color: .black,
+                //                        radius: 20
+                //                    )
+                //                    .opacity(0.1)
+                //                    .padding()
                 
                 if showAlert {
                     Text("tap or scroll to start")
@@ -123,22 +127,28 @@ struct ModalView: View {
             //            .navigationBarHidden(true)
             .onTapGesture()
             {
-//                print(maximumValue)
-                if counter.count < Int(maximumValue) {
-                    WKInterfaceDevice.current().play(.click)
-                    scrollAmount += 1
-                    count = Int(scrollAmount)
-                    counter.setAmountCount(AmountCount: Int(scrollAmount))
-//                    counter.increment()
-//                    counter.setDhikrName(dhikr: detailDhikr.name)
-                    trimProgress = 1/maximumValue
-                    progress += trimProgress
-                    
+                //                print(maximumValue)
+//                counter.setIphoneSendActive(status: false)
+//                //                print(counter.isIphoneSendActive)
+//                if counter.isIphoneSendActive == false {
+                    if counter.count < Int(maximumValue) {
+                        
+                        WKInterfaceDevice.current().play(.click)
+                        scrollAmount += 1
+                        count = Int(scrollAmount)
+                        counter.increment()
+//                        counter.setAmountCount(AmountCount: Int(scrollAmount))
+                        trimProgress = 1/maximumValue
+                        progress += trimProgress
+                        
+//                    }
                 }
                 
             }
             .onAppear {
-//                counter.increment()
+                counter.setAmountCount(AmountCount: 0)
+                counter.setAmountDhikr(AmountDhikr: detailDhikr.amount)
+                //                counter.increment()
                 counter.setDhikrName(dhikr: "\(detailDhikr.name ) \(detailDhikr.amount )x")
                 heartRate.start()
             }
@@ -162,7 +172,7 @@ struct ModalView: View {
 
 struct ModalView_Previews: PreviewProvider {
     static var previews: some View {
-        ModalView(detailDhikr: .constant(DetailDhikr(id: 1, name: "Any Dhikr", amount: 360)))
+        ModalView(detailDhikr: .constant(DetailDhikr(id: 1, name: "Any Dhikr", amount: 10)))
     }
 }
 

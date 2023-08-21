@@ -11,10 +11,14 @@ import WatchConnectivity
 class SessionDelegater: NSObject, WCSessionDelegate {
     let countSubject: PassthroughSubject<Int, Never>
     let dhikrNameSubject: PassthroughSubject<String, Never>
+    let statusIphoneSubject: PassthroughSubject<Bool, Never>
+    let amountDhikrSubject: PassthroughSubject<Int, Never>
     
-    init(countSubject: PassthroughSubject<Int, Never>, dhikrNameSubject: PassthroughSubject<String, Never>) {
+    init(countSubject: PassthroughSubject<Int, Never>, dhikrNameSubject: PassthroughSubject<String, Never>, statusIphoneSubject: PassthroughSubject<Bool, Never>, amountDhikrSubject: PassthroughSubject<Int, Never>) {
         self.countSubject = countSubject
         self.dhikrNameSubject = dhikrNameSubject
+        self.statusIphoneSubject = statusIphoneSubject
+        self.amountDhikrSubject = amountDhikrSubject
         super.init()
     }
     
@@ -48,6 +52,8 @@ class SessionDelegater: NSObject, WCSessionDelegate {
         DispatchQueue.main.async {
             self.handleCount(from: message)
             self.handleDhikrName(from: message)
+            self.handleIphoneStatus(from: message)
+            self.handleDhikrAmount(from: message)
         }
     }
 
@@ -63,12 +69,32 @@ class SessionDelegater: NSObject, WCSessionDelegate {
 
     private func handleDhikrName(from message: [String: Any]) {
         if let dhikr_name = message["dhikr_name"] as? String {
-            print("Sending dhikr name: \(dhikr_name)")
+//            print("Sending dhikr name: \(dhikr_name)")
             self.dhikrNameSubject.send(dhikr_name)
         } else {
             print("Error: 'dhikr_name' value not found in the received message")
         }
     }
+    
+    private func handleDhikrAmount(from message: [String: Any]) {
+        if let amount = message["amount"] as? Int {
+//            print("Sending dhikr name: \(dhikr_name)")
+            self.amountDhikrSubject.send(amount)
+        } else {
+            print("Error: 'amount' value not found in the received message")
+        }
+    }
+
+    
+    private func handleIphoneStatus(from message: [String: Any]) {
+        if let status = message["status"] as? Bool {
+//            print("Sending status: \(status)")
+            self.statusIphoneSubject.send(status)
+        } else {
+            print("Error: 'status' value not found in the received message")
+        }
+    }
+
 
     
     // iOS Protocol comformance

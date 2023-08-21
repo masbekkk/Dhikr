@@ -11,7 +11,9 @@ import SwiftUI
 struct SwiftUIWatchConnectivityApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            CountView(detailDhikr: .constant(DetailDhikr(id: 1, name: "Any Dhikr", amount: 10)))
+//            CombineView(detailDhikr: .constant(DetailDhikr(id: 1, name: "Any Dhikr", amount: 33)))
         }
     }
 }
