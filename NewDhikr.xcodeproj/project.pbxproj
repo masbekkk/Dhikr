@@ -29,6 +29,7 @@
 		DD1E10AA2A907EC4007ABE62 /* Dhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC252A8CC81A001F413A /* Dhikr.swift */; };
 		DD1E10AC2A925DE4007ABE62 /* CombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E10AB2A925DE4007ABE62 /* CombineView.swift */; };
 		DD1E10AD2A925DE4007ABE62 /* CombineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1E10AB2A925DE4007ABE62 /* CombineView.swift */; };
+		DD1E10AF2A930A91007ABE62 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC322A8CC81A001F413A /* HeartRate.swift */; };
 		DD25EC362A8CC81A001F413A /* Dhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC252A8CC81A001F413A /* Dhikr.swift */; };
 		DD25EC372A8CC81A001F413A /* DetailDhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC262A8CC81A001F413A /* DetailDhikr.swift */; };
 		DD25EC3D2A8CC81A001F413A /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25EC2D2A8CC81A001F413A /* ModalView.swift */; };
@@ -102,6 +103,7 @@
 		C24E094B262D384E00FFD5FE /* SessionDelegator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegator.swift; sourceTree = "<group>"; };
 		DD1E10A52A907E90007ABE62 /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
 		DD1E10AB2A925DE4007ABE62 /* CombineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineView.swift; sourceTree = "<group>"; };
+		DD1E10AE2A930A3D007ABE62 /* SwiftUIWatchConnectivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUIWatchConnectivity.entitlements; sourceTree = "<group>"; };
 		DD25EC252A8CC81A001F413A /* Dhikr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dhikr.swift; sourceTree = "<group>"; };
 		DD25EC262A8CC81A001F413A /* DetailDhikr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDhikr.swift; sourceTree = "<group>"; };
 		DD25EC2D2A8CC81A001F413A /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		C24E0911262D382A00FFD5FE /* SwiftUIWatchConnectivity */ = {
 			isa = PBXGroup;
 			children = (
+				DD1E10AE2A930A3D007ABE62 /* SwiftUIWatchConnectivity.entitlements */,
 				C24E0949262D384E00FFD5FE /* ContentView.swift */,
 				DD1E10A52A907E90007ABE62 /* CountView.swift */,
 				DD1E10AB2A925DE4007ABE62 /* CombineView.swift */,
@@ -388,6 +391,7 @@
 				C24E0913262D382A00FFD5FE /* SwiftUIWatchConnectivityApp.swift in Sources */,
 				DD1E10AC2A925DE4007ABE62 /* CombineView.swift in Sources */,
 				DD1E10A62A907E90007ABE62 /* CountView.swift in Sources */,
+				DD1E10AF2A930A91007ABE62 /* HeartRate.swift in Sources */,
 				C24E094C262D384E00FFD5FE /* ContentView.swift in Sources */,
 				DD1E10AA2A907EC4007ABE62 /* Dhikr.swift in Sources */,
 				DD1E10A72A907EB8007ABE62 /* Color.swift in Sources */,
@@ -647,6 +651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwiftUIWatchConnectivity/SwiftUIWatchConnectivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIWatchConnectivity/Preview Content\"";
 				DEVELOPMENT_TEAM = 8R3VHB938V;
@@ -671,6 +676,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwiftUIWatchConnectivity/SwiftUIWatchConnectivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIWatchConnectivity/Preview Content\"";
 				DEVELOPMENT_TEAM = 8R3VHB938V;

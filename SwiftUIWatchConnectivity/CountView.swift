@@ -15,9 +15,11 @@ struct CountView: View {
     @State private var count: Int = 1
     @State private var trimProgress: Double = 0.0
     @State private var progress: Double = 0.0
+    @State private var isAnimating = false
     @State private var showAlert: Bool = true
     
     @StateObject var counter = Counter()
+    @ObservedObject private var heartRate = HeartRate()
     
     let colors: [Color] = [Color.lightTosca, Color.tosca]
     
@@ -31,7 +33,28 @@ struct CountView: View {
                 
                 VStack {
                     Text("\(counter.count)")
-                        .font(.largeTitle)
+//                        .font(.largeTitle)
+                        .font(.custom("SF Pro", size: 45.0, relativeTo: .largeTitle))
+                        .padding(.top, 4)
+                    
+                    HStack {
+                        Text("\(heartRate.heartRateValue)")
+                            .font(.body)
+                        
+                        VStack {
+                            Image(systemName: "heart.fill")
+                                .scaleEffect(isAnimating ? 0.5 : 0.7)
+                                .animation(
+                                    .easeOut(duration: 1.0)
+                                    .repeatForever(autoreverses: true)
+                                )
+                            Text("BPM")
+                                .font(.footnote)
+                        }
+                        .foregroundColor(.red)
+                    }
+                    .padding([.top, .bottom], 3)
+
                 }
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -85,6 +108,7 @@ struct CountView: View {
             
         }
         .onAppear {
+            heartRate.start()
         }
     }
 }

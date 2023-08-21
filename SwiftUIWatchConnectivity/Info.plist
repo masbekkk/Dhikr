@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>The app needs access to your Health data to track heart rate during checking bpm</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>The app needs access to your Health data to track heart rate during checking bpm</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

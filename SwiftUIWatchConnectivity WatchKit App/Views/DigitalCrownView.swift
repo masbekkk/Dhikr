@@ -11,19 +11,18 @@ import WatchKit
 
 struct DigitalCrownView: View {
     @Binding var detailDhikr: DetailDhikr
-    @State private var shift: Int = 1
-    
+
     @State private var scrollAmount: Double = 0.0
     @State private var count: Int = 1
-//        @State private var maximumValue: Double = 10.0
     @State private var trimProgress: Double = 0.0
     @State private var progress: Double = 0.0
     @State private var isAnimating = false
     @State private var showAlert: Bool = true
-    @ObservedObject private var heartRate = HeartRate()
-    let colors: [Color] = [Color.tosca, Color.lightTosca]
     
+    @ObservedObject private var heartRate = HeartRate()
     @StateObject var counter = Counter()
+    
+    let colors: [Color] = [Color.lightTosca, Color.tosca]
     
     var body: some View {
         let maximumValue = Double(detailDhikr.amount)
@@ -69,21 +68,9 @@ struct DigitalCrownView: View {
                     sensitivity: .low,
                     isContinuous: false
                 )
-                .onReceive(Just(scrollAmount)) { newScrollAmount in
-                    let scroll = Int(newScrollAmount)
-                    if counter.count != scroll {
-                        count = scroll
-                        counter.setAmountCount(AmountCount: scroll)
-//                        counter.increment()
-                        trimProgress = 1 / maximumValue
-                        progress += trimProgress
-                    }
-                    if count == 0 {
-                        progress = 0
-                    }
-                }
+  
                 Circle()
-                    .trim(from: 0, to: CGFloat(progress))
+                    .trim(from: 0, to: CGFloat(counter.progressDhikr))
                     .stroke(
                         AngularGradient(
                             gradient: Gradient(colors: colors),
@@ -94,19 +81,7 @@ struct DigitalCrownView: View {
                         style: StrokeStyle(lineWidth: 20, lineCap: .round)
                     )
                     .rotationEffect(.degrees(-90))
-                
-                Circle()
-                    .frame(width: 20, height: 20)
-                    .offset(y: -150)
-                    .foregroundColor(Color.lightTosca)
-                    .rotationEffect(.degrees(360 * scrollAmount))
-                    .shadow(
-                        color: .black,
-                        radius: 20
-                    )
-                    .opacity(0.1)
-                    .padding()
-                
+      
                 if showAlert {
                     Text("tap or scroll to start")
                         .font(.footnote)
@@ -125,22 +100,24 @@ struct DigitalCrownView: View {
             {
                 
                 if counter.count < Int(maximumValue) {
+                    print(counter.progressDhikr)
                     WKInterfaceDevice.current().play(.click)
                     scrollAmount += 1
                     count = Int(scrollAmount)
-                    counter.setAmountCount(AmountCount: Int(scrollAmount))
-//                    counter.increment()
-//                    counter.setDhikrName(dhikr: detailDhikr.name)
+                    counter.increment()
                     trimProgress = 1/maximumValue
                     progress += trimProgress
+                    counter.setProgressDhikr(progress: trimProgress)
                     
                 }
                 
             }
             .onAppear {
-//                counter.increment()
+             counter.setAmountCount(AmountCount: 0)
+                counter.setAmountDhikr(AmountDhikr: detailDhikr.amount)
+                counter.setProgressDhikr(progress: progress)
+                //                counter.increment()
                 counter.setDhikrName(dhikr: "\(detailDhikr.name ) \(detailDhikr.amount )x")
-                heartRate.start()
             }
             VStack{
                 Text("\(detailDhikr.name ) \(detailDhikr.amount )x")
@@ -148,8 +125,6 @@ struct DigitalCrownView: View {
                     .padding(.top, 4)
             }
             .padding(.top, 5)
-//            .padding()
-            
         }
     }
 }
