@@ -13,12 +13,14 @@ class SessionDelegater: NSObject, WCSessionDelegate {
     let dhikrNameSubject: PassthroughSubject<String, Never>
     let statusIphoneSubject: PassthroughSubject<Bool, Never>
     let amountDhikrSubject: PassthroughSubject<Int, Never>
+    let progressDhikrSubject: PassthroughSubject<Double, Never>
     
-    init(countSubject: PassthroughSubject<Int, Never>, dhikrNameSubject: PassthroughSubject<String, Never>, statusIphoneSubject: PassthroughSubject<Bool, Never>, amountDhikrSubject: PassthroughSubject<Int, Never>) {
+    init(countSubject: PassthroughSubject<Int, Never>, dhikrNameSubject: PassthroughSubject<String, Never>, statusIphoneSubject: PassthroughSubject<Bool, Never>, amountDhikrSubject: PassthroughSubject<Int, Never>, progressDhikrSubject: PassthroughSubject<Double, Never>) {
         self.countSubject = countSubject
         self.dhikrNameSubject = dhikrNameSubject
         self.statusIphoneSubject = statusIphoneSubject
         self.amountDhikrSubject = amountDhikrSubject
+        self.progressDhikrSubject = progressDhikrSubject
         super.init()
     }
     
@@ -54,6 +56,7 @@ class SessionDelegater: NSObject, WCSessionDelegate {
             self.handleDhikrName(from: message)
             self.handleIphoneStatus(from: message)
             self.handleDhikrAmount(from: message)
+            self.handleDhikrProgress(from: message)
         }
     }
 
@@ -75,6 +78,16 @@ class SessionDelegater: NSObject, WCSessionDelegate {
             print("Error: 'dhikr_name' value not found in the received message")
         }
     }
+    
+    private func handleDhikrProgress(from message: [String: Any]) {
+        if let progress = message["progress"] as? Double {
+//            print("Sending dhikr name: \(dhikr_name)")
+            self.progressDhikrSubject.send(progress)
+        } else {
+            print("Error: 'progress' value not found in the received message")
+        }
+    }
+
     
     private func handleDhikrAmount(from message: [String: Any]) {
         if let amount = message["amount"] as? Int {

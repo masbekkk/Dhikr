@@ -69,7 +69,7 @@ struct ModalView: View {
                     isContinuous: false
                 )
                 Circle()
-                    .trim(from: 0, to: CGFloat(progress))
+                    .trim(from: 0, to: CGFloat(counter.progressDhikr))
                     .stroke(
                         AngularGradient(
                             gradient: Gradient(colors: colors),
@@ -95,19 +95,21 @@ struct ModalView: View {
             {
                 
                 if counter.count < Int(maximumValue) {
-                    
+                    print(counter.progressDhikr)
                     WKInterfaceDevice.current().play(.click)
                     scrollAmount += 1
                     count = Int(scrollAmount)
                     counter.increment()
                     trimProgress = 1/maximumValue
                     progress += trimProgress
+                    counter.setProgressDhikr(progress: trimProgress)
                 }
                 
             }
             .onAppear {
                 counter.setAmountCount(AmountCount: 0)
                 counter.setAmountDhikr(AmountDhikr: detailDhikr.amount)
+                counter.setProgressDhikr(progress: progress)
                 //                counter.increment()
                 counter.setDhikrName(dhikr: "\(detailDhikr.name ) \(detailDhikr.amount )x")
                 heartRate.start()

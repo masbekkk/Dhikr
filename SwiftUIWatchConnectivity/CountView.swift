@@ -39,7 +39,7 @@ struct CountView: View {
                     }
                 }
                 Circle()
-                    .trim(from: 0, to: CGFloat(progress))
+                    .trim(from: 0, to: CGFloat(counter.progressDhikr))
                     .stroke(
                         AngularGradient(
                             gradient: Gradient(colors: colors),
@@ -75,10 +75,12 @@ struct CountView: View {
         .onTapGesture()
         {
             if counter.count < Int(maximumValue) {
+                print(counter.progressDhikr)
                 scrollAmount += 1
                 counter.increment()
                 trimProgress = 1/maximumValue
                 progress += trimProgress
+                counter.setProgressDhikr(progress: trimProgress)
             }
             
         }

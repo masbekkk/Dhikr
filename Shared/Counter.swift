@@ -16,14 +16,16 @@ final class Counter: ObservableObject {
     private let nameSubject = PassthroughSubject<String, Never>()
     private let statusIphoneSubject = PassthroughSubject<Bool, Never>()
     private let amountDhikrSubject = PassthroughSubject<Int, Never>()
+    private let progressDhikrSubject = PassthroughSubject<Double, Never>()
     
     @Published var count: Int = 0
     @Published var dhikrName: String = ""
     @Published var isIphoneSendActive: Bool = true
     @Published var amountDhikr: Int = 0
+    @Published var progressDhikr: Double = 0.0
     
     init(session: WCSession = .default) {
-        self.delegate = SessionDelegater(countSubject: countSubject, dhikrNameSubject: nameSubject, statusIphoneSubject: statusIphoneSubject, amountDhikrSubject: amountDhikrSubject)
+        self.delegate = SessionDelegater(countSubject: countSubject, dhikrNameSubject: nameSubject, statusIphoneSubject: statusIphoneSubject, amountDhikrSubject: amountDhikrSubject, progressDhikrSubject: progressDhikrSubject)
         self.session = session
         self.session.delegate = self.delegate
         self.session.activate()
@@ -36,9 +38,14 @@ final class Counter: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$dhikrName)
         
+        progressDhikrSubject
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$progressDhikr)
+        
         amountDhikrSubject
             .receive(on: DispatchQueue.main)
             .assign(to: &$amountDhikr)
+        
         
         statusIphoneSubject
             .receive(on: DispatchQueue.main)
@@ -55,11 +62,20 @@ final class Counter: ObservableObject {
         sendMessage(["count": count])
     }
     
+    func setProgressDhikr(progress: Double) {
+//        print("Received dhikr name: \(dhikr)")
+        progressDhikr += progress
+        sendMessage(["progress": progressDhikr])
+    }
+
+    
     func setDhikrName(dhikr: String) {
 //        print("Received dhikr name: \(dhikr)")
         dhikrName = dhikr
         sendMessage(["dhikr_name": dhikrName])
     }
+    
+
     
     func setAmountDhikr(AmountDhikr: Int) {
 //        print("Received count: \(count)")
@@ -78,7 +94,7 @@ final class Counter: ObservableObject {
     func setIphoneSendActive(status: Bool) {
 //        print("Received status: \(status)")
         isIphoneSendActive = status
-        sendMessage(["status": status])
+        sendMessage(["status": isIphoneSendActive])
     }
 
     
